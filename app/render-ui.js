@@ -1,17 +1,39 @@
-function renderUI(state) {
+const Vue = require('vue/dist/vue.common.js');
 
-  // Adding an active class to the nav links
-  const navLinks = Array.prototype.slice.call(document.querySelectorAll('nav li'));
-  navLinks.forEach((navLink) => {
-    const page = '/' + navLink.id.replace('page-link-', '');
-    if (state.route === page) {
-      navLink.classList.add('active');
-    } else {
-      if (navLink.classList.contains('active')) {
-        navLink.classList.remove('active');
-      }
+Vue.component('nav-item', {
+  props: ['page', 'onClick' ],
+  template: '<li v-on:click="handleClick" v-bind:class="{ active: page.isActive }">{{ page.title }}</li>',
+  methods: {
+    handleClick: function() {
+      this.onClick(this.page.route);
     }
-  });
+  }
+});
+
+const app = new Vue ({
+  el: '#app',
+  data: {
+    pages: [
+      { title: 'name', route: '/name', isActive: true },
+      { title: 'email', route: '/email', isActive: false },
+      { title: 'address', route: '/address', isActive: false },
+      { title: 'SSN', route: '/ssn', isActive: false },
+    ],
+    updateRoute: () => {},
+  },
+});
+
+function renderUI(state, actions) {
+  const {
+    updateRoute,
+  } = actions;
+  const {
+    route,
+  } = state;
+
+  app.updateRoute = updateRoute;
+  // Add an active class to the active navbar link
+  app.pages = app.pages.map(page => Object.assign({}, page, { isActive: page.route === route }));
 };
 
 module.exports = { renderUI };

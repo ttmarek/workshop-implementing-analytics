@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "redux": "^3.6.0",
-    "redux-beacon": "0.1.x"
+    "redux-beacon": "0.1.x",
+    "vue": "^2.1.10"
   }
 }

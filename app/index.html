@@ -3,18 +3,21 @@
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-    <header>
-      <h1>Shady Form</h1>
-      <nav>
-        <ul>
-          <li id="page-link-name">Name</li>
-          <li id="page-link-email">Email</li>
-          <li id="page-link-address">Address</li>
-          <li id="page-link-ssn">SSN</li>
-        </ul>
-      </nav>
-    </header>
-    <div id="page-content"></div>
+    <div id="app">
+      <header>
+        <h1>Shady Form</h1>
+        <nav>
+          <ul>
+            <nav-item v-for="page in pages" v-bind="{ page, onClick: updateRoute }"></nav-item>
+            <!-- <li id="page-link-name">Name</li> -->
+            <!-- <li id="page-link-email">Email</li> -->
+            <!-- <li id="page-link-address">Address</li> -->
+            <!-- <li id="page-link-ssn">SSN</li> -->
+          </ul>
+        </nav>
+      </header>
+      <div id="page-content"></div>
+    </div>
   </body>
   <script type="text/javascript" src="./bundle.js"></script>
 </html>
