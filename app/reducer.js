@@ -5,11 +5,13 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log('***', action);
   const reducers = {
     ROUTE_CHANGED: {
       route: action.payload,
     },
+    FORM_CHANGED: {
+
+    }
   };
   return Object.assign({}, state, reducers[action.type]);
 }

@@ -1,8 +1,19 @@
-const { ROUTE_CHANGED } = require('./action-types');
+const {
+  ROUTE_CHANGED,
+  FORM_UPDATED,
+} = require('./action-types');
 
 const updateRoute = route => ({
   type: ROUTE_CHANGED,
   payload: route,
 });
 
-module.exports = { updateRoute };
+const updateFormData = data => ({
+  type: FORM_UPDATED,
+  payload: data,
+});
+
+module.exports = {
+  updateRoute,
+  updateFormData,
+};

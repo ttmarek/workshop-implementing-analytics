@@ -5,18 +5,27 @@
   <body>
     <div id="app">
       <header>
-        <h1>Shady Form</h1>
+        <h1>Form</h1>
         <nav>
           <ul>
             <nav-item v-for="page in pages" v-bind="{ page, onClick: updateRoute }"></nav-item>
-            <!-- <li id="page-link-name">Name</li> -->
-            <!-- <li id="page-link-email">Email</li> -->
-            <!-- <li id="page-link-address">Address</li> -->
-            <!-- <li id="page-link-ssn">SSN</li> -->
           </ul>
         </nav>
       </header>
-      <div id="page-content"></div>
+      <div id="page-content">
+        <div v-if="currentRoute === '/name'">
+          <input placeholder="John Smith" v-on:input="handleNameInput">
+        </div>
+        <div v-if="currentRoute === '/email'">
+          <input type="email" placeholder="john@gmail.com" v-on:input="handleEmailInput">
+        </div>
+        <div v-if="currentRoute === '/address'">
+          <input placeholder="129 Spadina Ave" v-on:input="handleAddressInput">
+        </div>
+        <div v-if="currentRoute === '/ssn'">
+          <input placeholder="123-456-789" v-on:input="handleSSNInput">
+        </div>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="./bundle.js"></script>

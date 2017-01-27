@@ -1,15 +1,16 @@
 const Redux = require('redux');
 const { reducer } = require('./reducer');
 const { renderUI } = require('./render-ui');
-const { updateRoute } = require('./action-creators');
+const {
+  updateRoute,
+  updateFormData,
+} = require('./action-creators');
 
 const store = Redux.createStore(reducer);
 
 const actions = {
-  updateRoute: route => {
-    console.log('update Route called');
-    store.dispatch(updateRoute(route));
-  },
+  updateRoute: route => store.dispatch(updateRoute(route)),
+  updateFormData: data => store.dispatch(updateFormData(data)),
 };
 
 const updateApp = () => renderUI(store.getState(), actions);
