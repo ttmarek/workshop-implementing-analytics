@@ -24,6 +24,9 @@ const app = new Vue ({
     updateRoute: () => {},
   },
   methods: {
+    submitForm() {
+      this.updateRoute('/complete');
+    },
     handleNameInput(event) {
       this.updateFormData('name', event.target.value);
     },

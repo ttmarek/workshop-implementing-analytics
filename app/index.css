@@ -1,10 +1,19 @@
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  margin: 0;
+}
+
 li {
   cursor: pointer;
 }
 
 nav {
-  padding: 10px 10px 10px 0;
-  background-color: #f1f1f1;
+  align-items: center;
+  background-color: #673AB7;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  color: #fff;
+  display: flex;
+  justify-content: center;
 }
 
 nav ul {
@@ -12,13 +21,55 @@ nav ul {
   flex-direction: row;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 nav li {
   text-transform: capitalize;
-  padding-left: 15px;
+  font-size: large;
+  padding: 20 30px;
 }
 
 nav li.active {
-  text-decoration: underline;
+  background-color: #9575CD;
+}
+
+input {
+  font-size: 40px;
+  padding: 30px;
+  width: 100%;
+}
+
+button {
+  margin-top: 50px;
+  width: 100%;
+  border: none;
+  border-radius: 2px;
+  font-size: 20px;
+  padding: 20px;
+  text-transform: uppercase;
+  will-change: box-shadow;
+  transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  text-align: center;
+  vertical-aling: middle;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  background-color: #673AB7;
+  color: white;
+  cursor: pointer;
+}
+
+#page-content {
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+}
+
+#form-submitted-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

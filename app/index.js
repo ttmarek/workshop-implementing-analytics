@@ -8,8 +8,13 @@ const {
   updateFormData,
 } = require('./action-creators');
 
+const { analyticsMiddleware } = require('./analytics');
+
 const reduxLogger = createLogger();
-const store = Redux.createStore(reducer, Redux.applyMiddleware(reduxLogger));
+const store = Redux.createStore(
+  reducer,
+  Redux.applyMiddleware(reduxLogger, analyticsMiddleware)
+);
 
 const actions = {
   updateRoute: route => store.dispatch(updateRoute(route)),

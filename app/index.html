@@ -4,27 +4,30 @@
   </head>
   <body>
     <div id="app">
-      <header>
-        <h1>Form</h1>
+      <div v-if="currentRoute !== '/complete'">
         <nav>
           <ul>
             <nav-item v-for="page in pages" v-bind="{ page, onClick: updateRoute }"></nav-item>
           </ul>
         </nav>
-      </header>
-      <div id="page-content">
-        <div v-if="currentRoute === '/name'">
-          <input placeholder="John Smith" v-on:input="handleNameInput" v-bind:value="formData.name">
+        <div id="page-content">
+          <div v-if="currentRoute === '/name'">
+            <input placeholder="John Smith" v-on:input="handleNameInput" v-bind:value="formData.name">
+          </div>
+          <div v-if="currentRoute === '/email'">
+            <input type="email" placeholder="john@gmail.com" v-on:input="handleEmailInput" v-bind:value="formData.email">
+          </div>
+          <div v-if="currentRoute === '/address'">
+            <input placeholder="129 Spadina Ave" v-on:input="handleAddressInput" v-bind:value="formData.address">
+          </div>
+          <div v-if="currentRoute === '/ssn'">
+            <input placeholder="123-456-789" v-on:input="handleSSNInput" v-bind:value="formData.ssn">
+            <button v-on:click="submitForm">Submit Form</button>
+          </div>
         </div>
-        <div v-if="currentRoute === '/email'">
-          <input type="email" placeholder="john@gmail.com" v-on:input="handleEmailInput" v-bind:value="formData.email">
-        </div>
-        <div v-if="currentRoute === '/address'">
-          <input placeholder="129 Spadina Ave" v-on:input="handleAddressInput" v-bind:value="formData.address">
-        </div>
-        <div v-if="currentRoute === '/ssn'">
-          <input placeholder="123-456-789" v-on:input="handleSSNInput" v-bind:value="formData.ssn">
-        </div>
+      </div>
+      <div v-else id="form-submitted-page">
+        <img src="https://media.giphy.com/media/3osxYamKD88c6pXdfO/giphy.gif" alt="Money GIF">
       </div>
     </div>
   </body>
