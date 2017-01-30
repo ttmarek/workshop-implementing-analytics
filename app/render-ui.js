@@ -19,14 +19,23 @@ const app = new Vue ({
       { title: 'address', route: '/address', isActive: false },
       { title: 'SSN', route: '/ssn', isActive: false },
     ],
+    formData: {},
     currentRoute: '/name',
     updateRoute: () => {},
   },
   methods: {
-    handleNameInput: event => this.updateFormData({ name: event.target.value }),
-    handleEmailInput: event => this.updateFormData({ email: event.target.value }),
-    handleAddressInput: event => this.updateFormData({ address: event.target.value }),
-    handleSSNInput: event => this.updateFormData({ ssn: event.target.value }),
+    handleNameInput(event) {
+      this.updateFormData('name', event.target.value);
+    },
+    handleEmailInput(event) {
+      this.updateFormData('email', event.target.value);
+    },
+    handleAddressInput(event) {
+      this.updateFormData('address', event.target.value);
+    },
+    handleSSNInput(event) {
+      this.updateFormData('ssn', event.target.value);
+    },
   },
 });
 
@@ -37,10 +46,15 @@ function renderUI(state, actions) {
   } = actions;
   const {
     route,
+    name,
+    email,
+    address,
+    ssn,
   } = state;
 
   app.updateRoute = updateRoute;
   app.currentRoute = route;
+  app.formData = { name, email, address, ssn };
   app.updateFormData = updateFormData;
   // Add an active class to the active navbar link
   app.pages = app.pages.map(page => Object.assign({}, page, { isActive: page.route === route }));

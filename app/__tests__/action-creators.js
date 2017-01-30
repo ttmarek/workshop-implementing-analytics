@@ -3,7 +3,13 @@ const {
   updateFormData,
 } = require('../action-creators');
 
-const { ROUTE_CHANGED, FORM_UPDATED } = require('../action-types');
+const {
+  ROUTE_CHANGED,
+  NAME_UPDATED,
+  EMAIL_UPDATED,
+  ADDRESS_UPDATED,
+  SSN_UPDATED,
+} = require('../action-types');
 
 describe('updateRoute(route)', () => {
   it('returns the correct Redux action', () => {
@@ -15,12 +21,41 @@ describe('updateRoute(route)', () => {
   });
 });
 
-describe('updateFormData(data)', () => {
-  it('returns the correct Redux action', () => {
-    const result = updateFormData({ name: 'john' });
-    expect(result).toEqual({
-      type: FORM_UPDATED,
-      payload: { name: 'john' },
+describe('updateFormData(field, data)', () => {
+  describe('when field is "name", and data is "john"', () => {
+    it('returns the correct Redux action', () => {
+      const result = updateFormData('name', 'john');
+      expect(result).toEqual({
+        type: NAME_UPDATED,
+        payload: 'john',
+      });
+    });
+  });
+  describe('when field is "email", and data is "john@gmail.com"', () => {
+    it('returns the correct Redux action', () => {
+      const result = updateFormData('email', 'john@gmail.com');
+      expect(result).toEqual({
+        type: EMAIL_UPDATED,
+        payload: 'john@gmail.com',
+      });
+    });
+  });
+  describe('when field is "address", and data is "129 Spadina Ave"', () => {
+    it('returns the correct Redux action', () => {
+      const result = updateFormData('address', '129 Spadina Ave');
+      expect(result).toEqual({
+        type: ADDRESS_UPDATED,
+        payload: '129 Spadina Ave',
+      });
+    });
+  });
+  describe('when field is "ssn" and data is 123-456-789', () => {
+    it('returns the correct Redux action', () => {
+      const result = updateFormData('ssn', '123-456-789');
+      expect(result).toEqual({
+        type: SSN_UPDATED,
+        payload: '123-456-789',
+      });
     });
   });
 });

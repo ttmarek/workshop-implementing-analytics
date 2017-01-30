@@ -14,16 +14,16 @@
       </header>
       <div id="page-content">
         <div v-if="currentRoute === '/name'">
-          <input placeholder="John Smith" v-on:input="handleNameInput">
+          <input placeholder="John Smith" v-on:input="handleNameInput" v-bind:value="formData.name">
         </div>
         <div v-if="currentRoute === '/email'">
-          <input type="email" placeholder="john@gmail.com" v-on:input="handleEmailInput">
+          <input type="email" placeholder="john@gmail.com" v-on:input="handleEmailInput" v-bind:value="formData.email">
         </div>
         <div v-if="currentRoute === '/address'">
-          <input placeholder="129 Spadina Ave" v-on:input="handleAddressInput">
+          <input placeholder="129 Spadina Ave" v-on:input="handleAddressInput" v-bind:value="formData.address">
         </div>
         <div v-if="currentRoute === '/ssn'">
-          <input placeholder="123-456-789" v-on:input="handleSSNInput">
+          <input placeholder="123-456-789" v-on:input="handleSSNInput" v-bind:value="formData.ssn">
         </div>
       </div>
     </div>
