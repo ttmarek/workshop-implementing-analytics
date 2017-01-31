@@ -15,14 +15,28 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  const reducers = {
-    ROUTE_CHANGED: { route: action.payload },
-    NAME_UPDATED: { name: action.payload },
-    EMAIL_UPDATED: { email: action.payload },
-    ADDRESS_UPDATED: { address: action.payload },
-    SSN_UPDATED: { ssn: action.payload },
-  };
-  return Object.assign({}, state, reducers[action.type]);
+  const update = sliceOfState => Object.assign({}, state, sliceOfState);
+  switch (action.type) {
+    case ROUTE_CHANGED:
+      return update({ route: action.payload });
+    case NAME_UPDATED:
+      return update({ name : action.payload });
+    case EMAIL_UPDATED:
+      return update({ email: action.payload });
+    case ADDRESS_UPDATED:
+      return update({ address: action.payload });
+    case SSN_UPDATED: {
+      const ssn = action.payload;
+      if (ssn.length < state.ssn.length) { // backspacing
+        return update({ ssn });
+      }
+      const needsADash = str => /^\d{3}$/g.test(str) || /^\d{3}-\d{3}$/g.test(str);
+      const formattedSSN = needsADash(ssn) ? `${ssn}-` : ssn;
+      return update({ ssn: formattedSSN });
+    }
+    default:
+      return state;
+  }
 }
 
 module.exports = { reducer };

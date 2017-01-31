@@ -27,3 +27,4 @@ const updateApp = () => renderUI(store.getState(), actions);
 
 updateApp();
 store.subscribe(updateApp);
+actions.updateRoute('/name');

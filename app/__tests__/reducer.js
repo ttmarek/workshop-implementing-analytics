@@ -105,4 +105,101 @@ describe('On SSN_UPDATED', () => {
       ssn: '123-456-789',
     });
   });
+  describe('When the SSN has 3 digits', () => {
+    it('adds a dash to the end', () => {
+      const action = {
+        type: SSN_UPDATED,
+        payload: '123',
+      };
+      const prevState = {
+        name: 'john',
+        email: 'john@gmail.com',
+        address: '129 Spadina Ave',
+        ssn: '12'
+      };
+
+      const result = reducer(prevState, action);
+
+      expect(result).toEqual({
+        name: 'john',
+        email: 'john@gmail.com',
+        address: '129 Spadina Ave',
+        ssn: '123-',
+      });
+    });
+  });
+
+  describe('When the SSN has 6 digits', () => {
+    it('adds a dash to the end', () => {
+      const action = {
+        type: SSN_UPDATED,
+        payload: '123-456',
+      };
+      const prevState = {
+        name: 'john',
+        email: 'john@gmail.com',
+        address: '129 Spadina Ave',
+        ssn: '123-45'
+      };
+
+      const result = reducer(prevState, action);
+
+      expect(result).toEqual({
+        name: 'john',
+        email: 'john@gmail.com',
+        address: '129 Spadina Ave',
+        ssn: '123-456-',
+      });
+    });
+  });
+
+  describe('When clearing the input using backspace', () => {
+    describe('When the SSN has 3 digits', () => {
+      it('adds a dash to the end', () => {
+        const action = {
+          type: SSN_UPDATED,
+          payload: '123',
+        };
+        const prevState = {
+          name: 'john',
+          email: 'john@gmail.com',
+          address: '129 Spadina Ave',
+          ssn: '123-'
+        };
+
+        const result = reducer(prevState, action);
+
+        expect(result).toEqual({
+          name: 'john',
+          email: 'john@gmail.com',
+          address: '129 Spadina Ave',
+          ssn: '123',
+        });
+      });
+    });
+
+    describe('When the SSN has 6 digits', () => {
+      it('adds a dash to the end', () => {
+        const action = {
+          type: SSN_UPDATED,
+          payload: '123-456',
+        };
+        const prevState = {
+          name: 'john',
+          email: 'john@gmail.com',
+          address: '129 Spadina Ave',
+          ssn: '123-456-'
+        };
+
+        const result = reducer(prevState, action);
+
+        expect(result).toEqual({
+          name: 'john',
+          email: 'john@gmail.com',
+          address: '129 Spadina Ave',
+          ssn: '123-456',
+        });
+      });
+    });
+  });
 });

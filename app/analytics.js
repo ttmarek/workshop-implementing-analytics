@@ -13,6 +13,15 @@ const eventsMap = {
       hitType: 'pageview',
       page: action.payload,
     }),
+    eventSchema: {
+      page: value => [
+        '/name',
+        '/email',
+        '/address',
+        '/ssn',
+        '/complete',
+      ].includes(value),
+    },
   },
   SSN_APPLICATION_CLICKED: {
     eventFields: action => ({
@@ -21,6 +30,7 @@ const eventsMap = {
       eventAction: 'SSN Application Form Requested',
     }),
   },
+
 };
 
 const analyticsMiddleware = createMiddleware(eventsMap, GoogleAnalytics, { logger });

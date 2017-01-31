@@ -13,7 +13,7 @@ const updateRoute = route => ({
 });
 
 
-function updateFormData(field, data) {
+function updateFormData(field, data, key) {
   switch (field) {
     case 'name':
       return { type: NAME_UPDATED, payload: data };

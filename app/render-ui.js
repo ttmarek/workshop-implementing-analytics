@@ -20,7 +20,7 @@ const app = new Vue ({
       { title: 'SSN', route: '/ssn', isActive: false },
     ],
     formData: {},
-    currentRoute: '/name',
+    currentRoute: '',
     updateRoute: () => {},
   },
   methods: {
