@@ -46,6 +46,7 @@ function renderUI(state, actions) {
   const {
     updateRoute,
     updateFormData,
+    ssnApplicationClicked,
   } = actions;
   const {
     route,
@@ -55,6 +56,7 @@ function renderUI(state, actions) {
     ssn,
   } = state;
 
+  app.ssnApplicationClicked = ssnApplicationClicked;
   app.updateRoute = updateRoute;
   app.currentRoute = route;
   app.formData = { name, email, address, ssn };

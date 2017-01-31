@@ -1,6 +1,7 @@
 const {
   updateRoute,
   updateFormData,
+  ssnApplicationClicked,
 } = require('../action-creators');
 
 const {
@@ -9,6 +10,7 @@ const {
   EMAIL_UPDATED,
   ADDRESS_UPDATED,
   SSN_UPDATED,
+  SSN_APPLICATION_CLICKED,
 } = require('../action-types');
 
 describe('updateRoute(route)', () => {
@@ -56,6 +58,15 @@ describe('updateFormData(field, data)', () => {
         type: SSN_UPDATED,
         payload: '123-456-789',
       });
+    });
+  });
+});
+
+describe('ssnApplicationClicked()', () => {
+  it('returns the correct Redux action', () => {
+    const result = ssnApplicationClicked();
+    expect(result).toEqual({
+      type: SSN_APPLICATION_CLICKED,
     });
   });
 });

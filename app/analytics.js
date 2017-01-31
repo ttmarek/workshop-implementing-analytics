@@ -4,6 +4,7 @@ const { logger } = require('redux-beacon/extensions/logger');
 
 const {
   ROUTE_CHANGED,
+  SSN_APPLICATION_CLICKED,
 } = require('./action-types');
 
 const eventsMap = {
@@ -11,7 +12,14 @@ const eventsMap = {
     eventFields: action => ({
       hitType: 'pageview',
       page: action.payload,
-    })
+    }),
+  },
+  SSN_APPLICATION_CLICKED: {
+    eventFields: action => ({
+      hitType: 'event',
+      eventCategory: 'SSN',
+      eventAction: 'SSN Application Form Requested',
+    }),
   },
 };
 

@@ -22,6 +22,15 @@
           </div>
           <div v-if="currentRoute === '/ssn'">
             <input placeholder="123-456-789" v-on:input="handleSSNInput" v-bind:value="formData.ssn">
+            <p>
+              <span>Dont have a Social Security number?</span>
+              <a
+                 href="https://www.ssa.gov/ssnumber/"
+                 target="_blank"
+                 v-on:click="ssnApplicationClicked">
+                Apply for One Now
+              </a>
+            </p>
             <button v-on:click="submitForm">Submit Form</button>
           </div>
         </div>

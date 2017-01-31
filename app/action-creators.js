@@ -4,6 +4,7 @@ const {
   EMAIL_UPDATED,
   ADDRESS_UPDATED,
   SSN_UPDATED,
+  SSN_APPLICATION_CLICKED,
 } = require('./action-types');
 
 const updateRoute = route => ({
@@ -27,7 +28,12 @@ function updateFormData(field, data) {
   }
 }
 
+const ssnApplicationClicked = () => ({
+  type: SSN_APPLICATION_CLICKED
+});
+
 module.exports = {
   updateRoute,
   updateFormData,
+  ssnApplicationClicked,
 };

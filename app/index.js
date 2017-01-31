@@ -6,6 +6,7 @@ const { renderUI } = require('./render-ui');
 const {
   updateRoute,
   updateFormData,
+  ssnApplicationClicked,
 } = require('./action-creators');
 
 const { analyticsMiddleware } = require('./analytics');
@@ -19,6 +20,7 @@ const store = Redux.createStore(
 const actions = {
   updateRoute: route => store.dispatch(updateRoute(route)),
   updateFormData: (field, data) => store.dispatch(updateFormData(field, data)),
+  ssnApplicationClicked: () => store.dispatch(ssnApplicationClicked()),
 };
 
 const updateApp = () => renderUI(store.getState(), actions);
